@@ -20,62 +20,55 @@ import static org.junit.Assert.*;
 @SpringBootTest(classes = DemoApplication.class)
 public class CourseSpringDataRepositoryTest {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired
-	CourseSpringDataRepository repository;
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    CourseSpringDataRepository repository;
 
-	@Test
-	public void findById_CoursePresent(){
-		Optional<Course> courseOptional = repository.findById(10001L);
-		assertTrue(courseOptional.isPresent());
+    @Test
+    public void findById_CoursePresent() {
+        Optional<Course> courseOptional = repository.findById(10001L);
+        assertTrue(courseOptional.isPresent());
 //		logger.info("{}", courseOptional.isPresent());
-	}
+    }
 
-	@Test
-	public void findById_CourseNotPresent() {
-		Optional<Course> courseOptional = repository.findById(20001L);
-		assertFalse(courseOptional.isPresent());
+    @Test
+    public void findById_CourseNotPresent() {
+        Optional<Course> courseOptional = repository.findById(20001L);
+        assertFalse(courseOptional.isPresent());
 //		logger.info("{}", courseOptional.isPresent());
 
-	}
+    }
 
 
-	@Test
-	public void playWithSpringDataRepository() {
+    @Test
+    public void playWithSpringDataRepository() {
 //	Course course = new Course("Microservices in 100 steps");
 //	repository.save(course);
 //
 ////	update
 //		course.setName("Microservices in 100 steps - updated");
 //		repository.save(course);
-	}
+    }
 
 
-//	sort
-	@Test
-	public void sort() {
+    //	sort
+    @Test
+    public void sort() {
 //		Course course = new Course("Microservices in 100 steps");
 //		repository.save(course);
 //
 ////	update
 //		course.setName("Microservices in 100 steps - updated");
 //		repository.save(course);
-		Sort sort = new Sort(Sort.Direction.DESC, "name");
-		logger.info("Courses -> {}", repository.findAll(sort));
-		logger.info("Count -> {}", repository.count());
-	}
+        Sort sort = new Sort(Sort.Direction.DESC, "name");
+        logger.info("Courses -> {}", repository.findAll(sort));
+        logger.info("Count -> {}", repository.count());
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    public void findUsingName() {
+        logger.info("FindByName -> {}", repository.findByName("JPA in 50 Steps"));
+    }
 
 
 }
