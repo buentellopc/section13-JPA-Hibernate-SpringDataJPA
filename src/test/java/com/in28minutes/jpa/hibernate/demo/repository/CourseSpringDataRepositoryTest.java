@@ -39,4 +39,27 @@ public class CourseSpringDataRepositoryTest {
 	}
 
 
+	@Test
+	public void playWithSpringDataRepository() {
+	Course course = new Course("Microservices in 100 steps");
+	repository.save(course);
+
+//	update
+		course.setName("Microservices in 100 steps - updated");
+		repository.save(course);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
