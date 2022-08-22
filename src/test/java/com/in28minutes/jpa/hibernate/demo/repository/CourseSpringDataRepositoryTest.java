@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -41,12 +42,27 @@ public class CourseSpringDataRepositoryTest {
 
 	@Test
 	public void playWithSpringDataRepository() {
-	Course course = new Course("Microservices in 100 steps");
-	repository.save(course);
+//	Course course = new Course("Microservices in 100 steps");
+//	repository.save(course);
+//
+////	update
+//		course.setName("Microservices in 100 steps - updated");
+//		repository.save(course);
+	}
 
-//	update
-		course.setName("Microservices in 100 steps - updated");
-		repository.save(course);
+
+//	sort
+	@Test
+	public void sort() {
+//		Course course = new Course("Microservices in 100 steps");
+//		repository.save(course);
+//
+////	update
+//		course.setName("Microservices in 100 steps - updated");
+//		repository.save(course);
+		Sort sort = new Sort(Sort.Direction.DESC, "name");
+		logger.info("Courses -> {}", repository.findAll(sort));
+		logger.info("Count -> {}", repository.count());
 	}
 
 
